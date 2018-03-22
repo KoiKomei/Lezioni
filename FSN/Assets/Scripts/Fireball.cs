@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fireball : MonoBehaviour {
 
     private float speed = 10.0f;
-    private float damage = 1.0f;
+    private int damage = 1;
 	// Use this for initialization
 	void Start () {
         
@@ -22,7 +22,7 @@ public class Fireball : MonoBehaviour {
     {
         PlayerCharacter player = other.GetComponent<PlayerCharacter>();
         if (player != null) {
-            Debug.Log("player hit");
+            player.hurt(damage);
         }
         Destroy(this.gameObject);
     }

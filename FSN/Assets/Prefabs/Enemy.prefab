@@ -108,6 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d7258716cf41943ab956d601d2056b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireballprefab: {fileID: 1093254625845448, guid: d54850b2424a39543ae83fa2fc746980,
+    type: 2}
 --- !u!114 &114840548812903856
 MonoBehaviour:
   m_ObjectHideFlags: 1
