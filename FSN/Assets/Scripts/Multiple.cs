@@ -20,9 +20,10 @@ public class Multiple : MonoBehaviour {
         {
             if (_enemies[i] == null)
             {
-
+                float nearbyX = Random.Range(-15, 15);
+                float nearbyZ = Random.Range(-15, 15);
                 _enemies[i] = Instantiate(enemyPrefab) as GameObject; //instatiate lo fa generico e devi dargli un tipo preciso
-                _enemies[i].transform.position = new Vector3(Random.Range(1f,5f), 1, Random.Range(1f,5f));
+                _enemies[i].transform.position = new Vector3(nearbyX, 1, nearbyZ);
                 float angle = Random.Range(0, 360f);
                 _enemies[i].transform.Rotate(0, angle, 0);
 
