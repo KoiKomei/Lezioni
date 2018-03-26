@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RayShooter : MonoBehaviour {
     private Camera _cam;
+    public Texture mirino;
 	// Use this for initialization
 	void Start () {
         _cam = GetComponent<Camera>();
@@ -13,10 +14,10 @@ public class RayShooter : MonoBehaviour {
 
     void OnGUI()
     {
-        int size = 12;
-        float posX = _cam.pixelWidth / 2 - size / 4;
+        int size = 24;
+        float posX = _cam.pixelWidth / 2 - size / 2;
         float posY = _cam.pixelHeight / 2 - size / 2;
-        GUI.Label(new Rect(posX, posY, size, size), "*");
+        GUI.Label(new Rect(posX, posY, size, size), mirino);
     }
 
 
