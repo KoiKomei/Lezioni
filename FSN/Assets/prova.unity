@@ -1149,7 +1149,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1167114987}
   - component: {fileID: 1167114990}
-  - component: {fileID: 1167114989}
   - component: {fileID: 1167114988}
   m_Layer: 0
   m_Name: Quad
@@ -1177,7 +1176,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1167114986}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1205,20 +1204,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1167114989
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1167114986}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1167114990
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2181,3 +2166,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mirino: {fileID: 2800000, guid: b1982fefd3ed29e49b35f4901298cc37, type: 3}
+  snipe: {fileID: 1167114986}

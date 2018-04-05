@@ -5,19 +5,26 @@ using UnityEngine;
 public class RayShooter : MonoBehaviour {
     private Camera _cam;
     public Texture mirino;
+    public GameObject snipe;
+    private bool sniping = false;
+
 	// Use this for initialization
 	void Start () {
         _cam = GetComponent<Camera>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        (snipe.GetComponent<Renderer>()).enabled = false;
 	}
 
     void OnGUI()
     {
-        int size = 24;
-        float posX = _cam.pixelWidth / 2 - size / 2;
-        float posY = _cam.pixelHeight / 2 - size / 2;
-        GUI.Label(new Rect(posX, posY, size, size), mirino);
+        if (!sniping)
+        {
+            int size = 36;
+            float posX = _cam.pixelWidth / 2 - size / 2;
+            float posY = _cam.pixelHeight / 2 - size / 2;
+            GUI.Label(new Rect(posX, posY, size, size), mirino);
+        }
     }
 
 
@@ -43,6 +50,31 @@ public class RayShooter : MonoBehaviour {
                    }
                 }
             }
+        }
+        if (Input.GetMouseButtonDown(1) && !sniping) {
+            _cam.fieldOfView = 10f;
+            Mouselook senseVert = GetComponent<Mouselook>();
+            senseVert.sensivityver = 1f;
+            (snipe.GetComponent<Renderer>()).enabled = true;
+
+            PlayerCharacter player = GetComponentInParent<PlayerCharacter>();
+            Mouselook senseHor = player.GetComponent<Mouselook>();
+            senseHor.sensivityhor = 1f;
+            sniping = true;
+        }
+
+        if (Input.GetMouseButtonUp(1) && sniping) {
+            _cam.fieldOfView = 60f;
+            Mouselook sensVert = GetComponent<Mouselook>();
+            sensVert.sensivityhor = 9.0f;
+            (snipe.GetComponent<Renderer>()).enabled = false;
+
+            PlayerCharacter player = GetComponentInParent<PlayerCharacter>();
+            Mouselook senseHor = player.GetComponent<Mouselook>();
+            senseHor.sensivityhor = 9.0f;
+            sniping = false;
+        
+            
         }
 		
 	}
