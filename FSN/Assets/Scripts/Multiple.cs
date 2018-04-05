@@ -9,7 +9,7 @@ public class Multiple : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        count = 10;
+        count = 5;
         _enemies = new GameObject[count];
 	}
 
