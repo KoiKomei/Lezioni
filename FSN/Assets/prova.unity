@@ -760,6 +760,7 @@ GameObject:
   - component: {fileID: 746458241}
   - component: {fileID: 746458240}
   - component: {fileID: 746458242}
+  - component: {fileID: 746458243}
   m_Layer: 0
   m_Name: Lilplayer
   m_TagString: Untagged
@@ -861,13 +862,11 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 746458235}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fefeff4c98b8b347abed0659b37ffea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  gravity: -9.8
 --- !u!114 &746458242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,6 +876,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3300d5298e36aca4a8a1a3e4f3d60061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &746458243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 746458235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a4e5935202edb745a817d5d7bd2147f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &752580003

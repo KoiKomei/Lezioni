@@ -15,7 +15,6 @@ public class fpsinput : MonoBehaviour {
 	private float speed = 6.0f;
     private float jump = 8.0f;
     private float gravity = -9.8f;
-    private Vector3 move = Vector3.zero;
     bool flip = true;
 	// Update is called once per frame
 	void Update () {
