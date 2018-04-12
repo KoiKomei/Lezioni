@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))] //dice che c'è
-[AddComponentMenu("Control Scipt/fpsinput")]
+[AddComponentMenu("Control Script/fpsinputjump")]
 
 public class fpsinputjump : MonoBehaviour {
     private CharacterController _char;
