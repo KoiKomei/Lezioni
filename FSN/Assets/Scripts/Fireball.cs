@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fireball : MonoBehaviour {
 
     private float speed = 10.0f;
-    private int damage = 1;
+    private int damage = 10;
 	// Use this for initialization
 	void Start () {
         

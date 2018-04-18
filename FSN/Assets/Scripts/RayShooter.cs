@@ -1,20 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RayShooter : MonoBehaviour {
     private Camera _cam;
     public Texture mirino;
     public GameObject snipe;
     private bool sniping = false;
+    private int count;
+    public Text c;
 
 	// Use this for initialization
 	void Start () {
+        count = 0;
+        setText();
         _cam = GetComponent<Camera>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         (snipe.GetComponent<Renderer>()).enabled = false;
 	}
+
+    void setText() {
+        c.text = count.ToString();
+    }
 
     void OnGUI()
     {
@@ -43,6 +52,9 @@ public class RayShooter : MonoBehaviour {
                     {
                         StartCoroutine(SphereIndicator(hit.point));
                         target.ReactToHit();
+                        count++;
+                        setText();
+
 
                     }
                     else {
