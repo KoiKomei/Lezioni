@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class RayShooter : MonoBehaviour {
     private Camera _cam;
@@ -25,7 +26,7 @@ public class RayShooter : MonoBehaviour {
         c.text = count.ToString();
     }
 
-    void OnGUI()
+   /* void OnGUI()
     {
         if (!sniping)
         {
@@ -34,12 +35,13 @@ public class RayShooter : MonoBehaviour {
             float posY = _cam.pixelHeight / 2 - size / 2;
             GUI.Label(new Rect(posX, posY, size, size), mirino);
         }
-    }
+    }*/
+
 
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
             Vector3 point = new Vector3(_cam.pixelWidth / 2, _cam.pixelHeight / 2, 0);
             Ray rag = _cam.ScreenPointToRay(point);
             RaycastHit hit;

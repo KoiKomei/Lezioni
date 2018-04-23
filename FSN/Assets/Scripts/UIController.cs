@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
-    [SerializeField] private Text scorelabel;
-	// Use this for initialization
+    [SerializeField] private Popup popup;
 	void Start () {
-		
+        popup.Close();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+       // scorelabel.text = Time.realtimeSinceStartup.ToString();
 		
 	}
 
     public void OpenSettings() {
         Debug.Log("Open Settings");
+        popup.Open();
     }
 }
