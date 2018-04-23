@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class RayShooter : MonoBehaviour {
     private Camera _cam;
-    public Texture mirino;
     public GameObject snipe;
     private bool sniping = false;
     private int count;
@@ -54,8 +53,7 @@ public class RayShooter : MonoBehaviour {
                     {
                         StartCoroutine(SphereIndicator(hit.point));
                         target.ReactToHit();
-                        count++;
-                        setText();
+                        Messenger.Broadcast(GameEvent.ENEMY_HIT);
 
 
                     }

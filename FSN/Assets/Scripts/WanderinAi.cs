@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WanderinAi : MonoBehaviour {
-
-    private float speed = 6.0f;
+    public const float basespeed = 3.0f;
+    public float speed = 6.0f;
     private float obstaclerange = 5.0f;
     private bool _alive;
     [SerializeField] private GameObject fireballprefab;
@@ -14,9 +14,21 @@ public class WanderinAi : MonoBehaviour {
 	void Start () {
         _alive = true;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void Awake()
+    {
+        Messenger<float>.AddListener(GameEvent.SPEED_CHANGED, OnSpeedChange);
+    }
+
+    private void OnDestroy()
+    {
+        Messenger<float>.RemoveListener(GameEvent.SPEED_CHANGED, OnSpeedChange);
+    }
+    private void OnSpeedChange(float value) {
+        speed = basespeed * value;
+    }
+    // Update is called once per frame
+    void Update () {
         if (_alive)
         {
             transform.Translate(0, 0, speed * Time.deltaTime);

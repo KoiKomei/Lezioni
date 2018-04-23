@@ -21,4 +21,14 @@ public class PlayerCharacter : MonoBehaviour {
         healthbar.value = health;
         
     }
+
+    public void Death() {
+        fillImg.enabled = false;
+        gameOver.enable = true;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+        GameEvent.ispaused = true;
+    }
 }

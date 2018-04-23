@@ -31,28 +31,33 @@ public class Mouselook : MonoBehaviour {
     // Use this for initialization
 
     // Update is called once per frame
-    void Update () {
-        if (axes == RotationAxes.MouseX)
+    void Update()
+    {
+        if (!GameEvent.ispaused)
         {
-            transform.Rotate(0, Input.GetAxis("Mouse X") * sensivityhor, 0);
+            if (axes == RotationAxes.MouseX)
+            {
+                transform.Rotate(0, Input.GetAxis("Mouse X") * sensivityhor, 0);
+            }
+            else if (axes == RotationAxes.MouseY)
+            {
+                _rotationX -= Input.GetAxis("Mouse Y") * sensivityver;
+                _rotationX = Mathf.Clamp(_rotationX, miny, maxy);
+                float rotationY = transform.localEulerAngles.y;
+
+                transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
+            }
+            else
+            {
+                _rotationX -= Input.GetAxis("Mouse Y") * sensivityver;
+                _rotationX = Mathf.Clamp(_rotationX, miny, maxy);
+
+                float delta = Input.GetAxis("Mouse X") * sensivityhor;
+                float rotationY = transform.localEulerAngles.y + delta;
+
+                transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
+            }
+
         }
-        else if (axes == RotationAxes.MouseY)
-        {
-            _rotationX -= Input.GetAxis("Mouse Y") * sensivityver;
-            _rotationX = Mathf.Clamp(_rotationX, miny, maxy);
-            float rotationY = transform.localEulerAngles.y;
-
-            transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
-        }
-        else {
-            _rotationX -= Input.GetAxis("Mouse Y") * sensivityver;
-            _rotationX = Mathf.Clamp(_rotationX, miny, maxy);
-
-            float delta = Input.GetAxis("Mouse X") * sensivityhor;
-            float rotationY = transform.localEulerAngles.y + delta;
-
-            transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
-        }
-
-	}
+    }
 }

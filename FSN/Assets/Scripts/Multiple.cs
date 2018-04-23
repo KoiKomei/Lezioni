@@ -6,7 +6,7 @@ public class Multiple : MonoBehaviour {
     [SerializeField] private GameObject enemyPrefab;
     private GameObject[] _enemies;
     private int count;
-
+    private float speed;
 	// Use this for initialization
 	void Start () {
         count = 5;
@@ -26,9 +26,23 @@ public class Multiple : MonoBehaviour {
                 _enemies[i].transform.position = new Vector3(nearbyX, 1, nearbyZ);
                 float angle = Random.Range(0, 360f);
                 _enemies[i].transform.Rotate(0, angle, 0);
-
+                _enemies[i].GetComponent<WanderinAi>().speed = speed;
             }
 
         }
+    }
+    private void Awake()
+    {
+        Messenger<float>.AddListener(GameEvent.SPEED_CHANGED, OnSpeedChange);
+    }
+
+    private void OnDestroy()
+    {
+        Messenger<float>.RemoveListener(GameEvent.SPEED_CHANGED, OnSpeedChange);
+    }
+    private void OnSpeedChange(float value)
+    {
+        speed = WanderinAi.basespeed * value;
+
     }
 }
