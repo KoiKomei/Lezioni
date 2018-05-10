@@ -7,6 +7,7 @@ public class PlayerCharacter : MonoBehaviour {
 
     private float health;
     [SerializeField] private Slider healthbar;
+    [SerializeField] private 
 	// Use this for initialization
 	void Start () {
         health = 100;
@@ -23,8 +24,8 @@ public class PlayerCharacter : MonoBehaviour {
     }
 
     public void Death() {
-        fillImg.enabled = false;
-        gameOver.enable = true;
+        //fillImg.enabled = false;
+        //gameOver.enable = true;
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
