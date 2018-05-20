@@ -36,4 +36,19 @@ public class fpsinput : MonoBehaviour {
             _char.Move(movement);
         }
 	}
+
+    private void Awake()
+    {
+        Messenger<float>.AddListener(GameEvent.SPEED_CHANGED, OnSpeedChange);
+    }
+
+    private void OnDestroy()
+    {
+        Messenger<float>.RemoveListener(GameEvent.SPEED_CHANGED, OnSpeedChange);
+    }
+    private void OnSpeedChange(float value)
+    {
+        speed = speed * value;
+
+    }
 }

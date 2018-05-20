@@ -6,16 +6,29 @@ using UnityEngine.UI;
 public class PlayerCharacter : MonoBehaviour {
 
     private float health;
+    private float healthpack;
     [SerializeField] private Slider healthbar;
-    [SerializeField] private 
 	// Use this for initialization
 	void Start () {
-        health = 100;
+        health = Managers.Player.health;
+        healthbar.maxValue = Managers.Player.maxHealth;
+        healthpack = Managers.Player.healthPackValue;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	}
+        if (Input.GetKeyDown(KeyCode.H) && Managers.Inventory.GetItemCount("health") != 0)
+        {
+            health += healthpack;
+            healthbar.value += healthpack;
+            if (health > Managers.Player.health)
+            {
+                health = Managers.Player.health;
+                healthbar.value = healthbar.maxValue;
+            }
+            Managers.Inventory.ConsumeItem("health");
+        }
+    }
 
     public void hurt(int damage) {
         health -= damage;
