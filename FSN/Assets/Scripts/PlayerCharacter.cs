@@ -8,11 +8,14 @@ public class PlayerCharacter : MonoBehaviour {
     private float health;
     private float healthpack;
     [SerializeField] private Slider healthbar;
-	// Use this for initialization
+    // Use this for initialization
+    private AudioSource _sound;
+
 	void Start () {
         health = Managers.Player.health;
         healthbar.maxValue = Managers.Player.maxHealth;
         healthpack = Managers.Player.healthPackValue;
+        _sound = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame

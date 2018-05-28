@@ -3,20 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(PlayerManager))]
 [RequireComponent(typeof(InventoryManager))]
-
+[RequireComponent(typeof(ImageManager))]
+[RequireComponent(typeof(WeatherManager))]
 public class Managers : MonoBehaviour {
 
     public static PlayerManager Player { get; private set; }
     public static InventoryManager Inventory { get; private set; }
+    public static WeatherManager Weather { get; private set; }
+    public static ImageManager Images { get; private set; }
     private List<IGameManager> _startSequence;
 
     void Awake()
     {
         Player = GetComponent<PlayerManager>();
         Inventory = GetComponent<InventoryManager>();
+        Weather = GetComponent<WeatherManager>();
+        Images = GetComponent<ImageManager>();
         _startSequence = new List<IGameManager>();
         _startSequence.Add(Player);
         _startSequence.Add(Inventory);
+        _startSequence.Add(Weather);
+        _startSequence.Add(Images);
         StartCoroutine(StartupManagers());
     }
 

@@ -10,10 +10,17 @@ public class fpsinputjump : MonoBehaviour
 {
     private CharacterController _char;
     // Use this for initialization
+    private AudioSource _soundSource;
+    [SerializeField] private AudioClip footstep;
+    private float _footstepsoundlength;
+    private bool _step;
+
     void Start()
     {
         _char = GetComponent<CharacterController>();
-
+        _soundSource = GetComponent<AudioSource>();
+        _step = true;
+        _footstepsoundlength = 0.30f;
     }
     private float basespeed = 3.0f;
     private float speed = 6.0f;
@@ -36,6 +43,7 @@ public class fpsinputjump : MonoBehaviour
             float deltaZ = Input.GetAxis("Vertical") * speed;
             if (_char.isGrounded)
             {
+                
                 move = new Vector3(deltaX, 0, deltaZ);
                 move = Vector3.ClampMagnitude(move, speed);
 
@@ -47,6 +55,10 @@ public class fpsinputjump : MonoBehaviour
             }
             move.y += gravity * Time.deltaTime;
             _char.Move(move * Time.deltaTime);
+            if (_char.velocity.magnitude > 1f && _step) {
+                _soundSource.PlayOneShot(footstep);
+                StartCoroutine(WaitForSteps(_footstepsoundlength));
+            }
         }
     }
     private void Awake()
@@ -62,5 +74,11 @@ public class fpsinputjump : MonoBehaviour
     {
         speed = basespeed * value;
 
+    }
+
+    IEnumerator WaitForSteps(float stepsLength) {
+        _step = false;
+        yield return new WaitForSeconds(stepsLength);
+        _step = true;
     }
 }

@@ -10,6 +10,9 @@ public class RayShooter : MonoBehaviour {
     private bool sniping = false;
     private int count;
     public Text c;
+    private AudioSource _soundSource;
+    [SerializeField] private AudioClip hitEnemySound;
+
 
 	// Use this for initialization
 	void Start () {
@@ -49,12 +52,14 @@ public class RayShooter : MonoBehaviour {
                 if (Physics.Raycast(rag, out hit)) {
                     GameObject hitObject = hit.transform.gameObject;
                     ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
+                    
                     if (target != null)
                     {
                         StartCoroutine(SphereIndicator(hit.point));
                         target.ReactToHit();
                         Messenger.Broadcast(GameEvent.ENEMY_HIT);
-
+                        _soundSource = target.GetComponent<AudioSource>();
+                        _soundSource.PlayOneShot(hitEnemySound);
 
                     }
                     else {
